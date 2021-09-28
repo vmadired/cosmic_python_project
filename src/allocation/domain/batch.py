@@ -41,8 +41,7 @@ class Batch:
         return self.available_qty >= line.qty and self.sku == line.sku and not self._has_allocation(line)
 
     def _has_allocation(self, line: OrderLine) -> bool:
-        return (for allocation in self._allocations if line.orderid == allocation.orderid)
-        # for allocation in self._allocations:
-        #     if line.orderid == allocation.orderid:
-        #         return True
-        # return False
+        for allocation in self._allocations:
+            if line.orderid == allocation.orderid:
+                return True
+        return False

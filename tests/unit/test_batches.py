@@ -1,7 +1,6 @@
 from datetime import date, timedelta
 
 from allocation.domain.batch import Batch
-from allocation.domain.model import allocate
 from allocation.domain.order_line import OrderLine
 
 today = date.today()
@@ -22,13 +21,3 @@ def test_allocating_to_a_batch_reduces_the_available_quantity():
     batch.allocate(order_line)
     batch.allocate(order_line_1)
     assert batch.available_qty == 18
-
-
-
-
-# def test_prefers_warehouse_batches_to_shipments():
-#     pytest.fail("todo")
-#
-#
-# def test_prefers_earlier_batches():
-#     pytest.fail("todo")

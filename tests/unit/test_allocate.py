@@ -5,7 +5,6 @@ import pytest
 from allocation.domain.batch import Batch
 from allocation.domain.model import allocate
 from allocation.domain.order_line import OrderLine
-from allocation.exceptions.out_of_stock_ex import OutOfStockEx
 
 today = date.today()
 tomorrow = today + timedelta(days=1)

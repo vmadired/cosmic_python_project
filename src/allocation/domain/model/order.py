@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class OrderLine:
-    orderid: str
+class Order:
+    order_id: str
     sku: str
     qty: int

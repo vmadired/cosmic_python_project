@@ -1,7 +1,7 @@
 from datetime import date, timedelta
 
-from allocation.domain.batch import Batch
-from allocation.domain.order_line import OrderLine
+from allocation.domain.model.batch import Batch
+from allocation.domain.model.order import Order
 
 today = date.today()
 tomorrow = today + timedelta(days=1)
@@ -11,7 +11,7 @@ later = tomorrow + timedelta(days=10)
 def prepare_batch_and_line(sku, qty, line_qty):
     return (
         Batch("batch-001", sku, qty, eta=today),
-        OrderLine("order-001", sku, line_qty)
+        Order("order-001", sku, line_qty)
     )
 
 

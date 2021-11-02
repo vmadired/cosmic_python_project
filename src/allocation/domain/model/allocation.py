@@ -1,8 +1,8 @@
 from typing import List
 
-from allocation.domain.models.batch import Batch
-from allocation.domain.models.order import Order
-from allocation.exceptions.out_of_stock_ex import OutOfStockEx
+from allocation.domain.exceptions.out_of_stock_ex import OutOfStockEx
+from allocation.domain.model.batch import Batch
+from allocation.domain.model.order import Order
 
 
 def allocate(order: Order, batches: List[Batch]) -> str:

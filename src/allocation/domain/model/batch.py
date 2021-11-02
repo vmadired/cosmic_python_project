@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Optional
 
-from allocation.domain.models.order import Order
+from allocation.domain.model.order import Order
 
 
 @dataclass()

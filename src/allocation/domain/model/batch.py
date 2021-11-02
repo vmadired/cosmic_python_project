@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Optional
 
-from allocation.domain.order_line import OrderLine
+from allocation.domain.models.order import Order
 
 
 @dataclass()
@@ -27,21 +27,21 @@ class Batch:
 
     @property
     def allocated_qty(self) -> int:
-        return sum(line.qty for line in self._allocations)
+        return sum(order.qty for order in self._allocations)
 
-    def allocate(self, line: OrderLine):
-        if self.can_allocate(line):
-            self._allocations.add(line)
+    def allocate(self, order: Order):
+        if self.can_allocate(order):
+            self._allocations.add(order)
 
-    def deallocate(self, line: OrderLine):
-        if (line in self._allocations):
-            self._allocations.remove(line)
+    def deallocate(self, order: Order):
+        if (order in self._allocations):
+            self._allocations.remove(order)
 
-    def can_allocate(self, line: OrderLine) -> bool:
-        return self.available_qty >= line.qty and self.sku == line.sku and not self._has_allocation(line)
+    def can_allocate(self, order: Order) -> bool:
+        return self.available_qty >= order.qty and self.sku == order.sku and not self._has_allocation(order)
 
-    def _has_allocation(self, line: OrderLine) -> bool:
+    def _has_allocation(self, order: Order) -> bool:
         for allocation in self._allocations:
-            if line.orderid == allocation.orderid:
+            if order.order_id == allocation.order_id:
                 return True
         return False
